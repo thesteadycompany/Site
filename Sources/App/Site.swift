@@ -15,4 +15,7 @@ struct AppSite: Site {
   var staticPages: [any StaticPage] = [
     GardenPage()
   ]
+  var articlePages: [any ArticlePage] = [
+    GardenArticlePage()
+  ]
 }
