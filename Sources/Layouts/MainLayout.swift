@@ -3,7 +3,13 @@ import Ignite
 
 struct MainLayout: Layout {
   var body: some Document {
-    Body()
-      .padding(.vertical, .xLarge)
+    Body {
+      NavigationBarComponent()
+        .padding(.bottom, .xLarge)
+      
+      content
+      
+      SocialFooterComponent()
+    }
   }
 }
