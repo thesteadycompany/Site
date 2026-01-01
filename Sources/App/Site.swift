@@ -7,8 +7,12 @@ struct AppSite: Site {
   let url = URL(static: "https://thesteadycompany.github.io")
   let builtInIconsEnabled = true
   let author = "Hogumachu"
-  let homePage = Home()
+  let homePage = HomePage()
   let layout = MainLayout()
   let darkTheme: (any Theme)? = DarkTheme()
   let lightTheme: (any Theme)? = LightTheme()
+  var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift])
+  var staticPages: [any StaticPage] = [
+    GardenPage()
+  ]
 }
