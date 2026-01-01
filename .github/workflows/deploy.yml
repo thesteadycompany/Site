@@ -55,18 +55,27 @@ jobs:
       - name: Copy Build files to target repository
         run: |
           # Verify Build folder exists before copying
-          if [ ! -d "../Build" ]; then
-            echo "Error: Build folder does not exist"
+          if [ ! -d "Build" ]; then
+            echo "Error: Build folder does not exist in workspace"
+            echo "Current directory: $(pwd)"
+            echo "Directory contents:"
+            ls -la
             exit 1
           fi
           
-          # Remove all existing files except .git
+          echo "Build folder found. Contents:"
+          ls -la Build/
+          
+          # Remove all existing files except .git from deploy-repo
           cd deploy-repo
           find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
           
-          # Copy all files from Build folder
-          cp -r ../Build/* .
+          # Copy all files from Build folder (using absolute path from workspace root)
+          cd ..
+          cp -r Build/* deploy-repo/
           
+          # Verify files were copied
+          cd deploy-repo
           echo "Files copied successfully:"
           ls -la
       
