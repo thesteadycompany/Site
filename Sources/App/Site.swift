@@ -9,4 +9,6 @@ struct AppSite: Site {
   let author = "Hogumachu"
   let homePage = Home()
   let layout = MainLayout()
+  let darkTheme: (any Theme)? = DarkTheme()
+  let lightTheme: (any Theme)? = LightTheme()
 }
