@@ -11,7 +11,7 @@ enum Links: CaseIterable, AnyLink {
   }
   var target: String {
     switch self {
-    case .personalBlog: "https://github.com/thesteadycompany"
+    case .personalBlog: "https://hogumachu.github.io"
     }
   }
 }
