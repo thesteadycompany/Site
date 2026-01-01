@@ -5,20 +5,17 @@ struct NavigationBarComponent: HTML {
   @Environment(\.articles) var art
   var body: some HTML {
     NavigationBar {
-      Dropdown("Contents") {
-        
-      }
+      Link("Garden", target: GardenPage())
       
       Link(target: "https://hogumachu.github.io") {
         Span("Personal Blog")
       }
     } logo: {
       Span("THE STEADY COMPANY")
-        .font(.custom("Space Grotesk", size: .em(1), weight: .bold))
+        .font(.logo)
     }
-    .navigationBarStyle(.dark)
     .navigationItemAlignment(.trailing)
     .position(.fixedTop)
-    .background(Color(hex: "#0A0A0A"))
+    .background(.ultraThinMaterial)
   }
 }

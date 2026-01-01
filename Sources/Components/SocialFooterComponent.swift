@@ -3,7 +3,7 @@ import Ignite
 
 struct SocialFooterComponent: HTML {
   var body: some HTML {
-    VStack {
+    VStack(spacing: .medium) {
       HStack {
         ForEach(SocialLink.allCases) {
           Link($0)
@@ -12,6 +12,8 @@ struct SocialFooterComponent: HTML {
             .relationship(.noReferrer)
         }
       }
+      
+      ThemeSwitchComponent()
     }
     .margin(.top, .xLarge)
     .font(.title3)
