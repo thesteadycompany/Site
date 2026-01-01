@@ -13,7 +13,8 @@ struct NavigationBarComponent: HTML {
         Span("Personal Blog")
       }
     } logo: {
-      EmptyInlineElement()
+      Span("THE STEADY COMPANY")
+        .font(.custom("Space Grotesk", size: .em(1), weight: .bold))
     }
     .navigationBarStyle(.dark)
     .navigationItemAlignment(.trailing)
