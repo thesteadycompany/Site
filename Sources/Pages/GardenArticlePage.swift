@@ -9,7 +9,7 @@ struct GardenArticlePage: ArticlePage {
       .foregroundStyle(.primary)
       .padding(.top, .xLarge)
     
-    Text(article.description)
+    Text(article.subtitle ?? "")
       .horizontalAlignment(.center)
       .font(.body)
       .foregroundStyle(.secondary)
