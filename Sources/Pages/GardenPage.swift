@@ -12,7 +12,7 @@ struct GardenPage: StaticPage {
     )
     .padding(.top, .xLarge)
     
-    Grid {
+    Grid(alignment: .leading) {
       ForEach(articles.all.recent()) { article in
         ArticlePreview(for: article)
           .articlePreviewStyle(GardenPreviewStyle())
