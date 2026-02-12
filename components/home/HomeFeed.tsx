@@ -59,7 +59,7 @@ export function HomeFeed({ data }: HomeFeedProps) {
         <HomeFilterChips selected={selectedType} onSelect={handleSelectType} />
       </div>
 
-      <div className="grid grid-cols-1 gap-3">
+      <div className="grid grid-cols-1 gap-4">
         {visibleItems.map((item) => (
           <HomeFeedCard key={`${item.contentType}-${item.slug}`} item={item} />
         ))}

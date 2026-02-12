@@ -63,12 +63,12 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
         defaultValue={query}
         aria-label="검색어 입력"
         placeholder="제목, 부제, 태그 검색"
-        className="h-11 w-full rounded-md border border-border bg-background px-3.5 text-base text-primary placeholder:text-tertiary"
+        className="h-11 w-full rounded-full bg-secondary-background/70 px-4 text-base text-primary placeholder:text-tertiary"
       />
       <button
         type="submit"
         aria-label="검색"
-        className="inline-flex h-11 shrink-0 items-center rounded-md border border-border px-4 text-base text-secondary transition-colors hover:border-tertiary hover:text-primary"
+        className="ui-hover ui-hover-soft inline-flex h-11 shrink-0 items-center rounded-full px-4 text-base text-secondary"
       >
         검색
       </button>
@@ -89,7 +89,7 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
           {results.length > 0 ? (
             <SearchResultList items={results} />
           ) : (
-            <p className="rounded-xl border border-border bg-secondary-background p-4 text-base text-secondary">
+            <p className="rounded-xl bg-secondary-background/40 p-4 text-base text-secondary">
               검색 결과가 없습니다. 다른 키워드로 다시 시도해 주세요.
             </p>
           )}
@@ -103,7 +103,7 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
             <Link
               key={keyword}
               href={`/search?q=${encodeURIComponent(keyword)}`}
-              className="rounded-full border border-border px-3.5 py-1.5 text-sm text-secondary transition-colors hover:border-tertiary hover:text-primary"
+              className="ui-hover inline-flex rounded-full px-3.5 py-1.5 text-sm text-secondary hover:bg-secondary-background/70"
             >
               {keyword}
             </Link>
@@ -118,18 +118,20 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
             <Link
               key={latestGarden.slug}
               href={latestGarden.url}
-              className="rounded-xl border border-border bg-secondary-background p-4 transition-colors hover:border-tertiary"
+              className="ui-hover ui-hover-lift group rounded-xl p-1.5 sm:p-2"
             >
               <div className="grid gap-3 sm:grid-cols-[1fr_140px] sm:items-start">
                 <div className="min-w-0">
                   <p className="text-sm text-tertiary">{latestGarden.date}</p>
-                  <p className="mt-1 text-base font-semibold text-primary">{latestGarden.title}</p>
+                  <p className="mt-1 text-base font-semibold text-primary transition-colors group-hover:text-secondary">
+                    {latestGarden.title}
+                  </p>
                   {latestGarden.subtitle ? (
                     <p className="mt-1 line-clamp-2 text-sm text-secondary">{latestGarden.subtitle}</p>
                   ) : null}
                 </div>
                 {latestGarden.coverImage ? (
-                  <div className="relative order-first h-20 w-full overflow-hidden rounded-md border border-border sm:order-none sm:h-[84px]">
+                  <div className="relative order-first h-20 w-full overflow-hidden rounded-lg sm:order-none sm:h-[84px]">
                     <Image
                       src={latestGarden.coverImage}
                       alt={`${latestGarden.title} cover image`}
@@ -146,10 +148,12 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
             <Link
               key={latestArticle.slug}
               href={latestArticle.url}
-              className="rounded-xl border border-border bg-secondary-background px-4 py-3 transition-colors hover:border-tertiary"
+              className="ui-hover ui-hover-lift group rounded-xl px-1.5 py-1"
             >
               <p className="text-sm text-tertiary">{latestArticle.date}</p>
-              <p className="mt-1 text-base font-semibold text-primary">{latestArticle.title}</p>
+              <p className="mt-1 text-base font-semibold text-primary transition-colors group-hover:text-secondary">
+                {latestArticle.title}
+              </p>
               {latestArticle.subtitle ? (
                 <p className="mt-1 line-clamp-2 text-sm text-secondary">{latestArticle.subtitle}</p>
               ) : null}

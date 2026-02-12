@@ -15,37 +15,42 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div aria-hidden className="h-10 w-24 rounded-full border border-border bg-secondary-background" />;
+    return <div aria-hidden className="h-7 w-12 rounded-full bg-secondary-background" />;
   }
 
   const isDark = resolvedTheme === "dark";
+  const nextTheme = isDark ? "light" : "dark";
 
   return (
-    <div className="inline-flex items-center rounded-full border border-border bg-secondary-background p-1">
-      <button
-        type="button"
-        onClick={() => setTheme("light")}
-        className={`rounded-full px-3 py-1 text-sm transition-colors ${
-          !isDark
-            ? "bg-background text-primary shadow-sm"
-            : "text-secondary hover:text-primary"
+    <button
+      type="button"
+      role="switch"
+      aria-checked={isDark}
+      aria-label={isDark ? "라이트 모드로 전환" : "다크 모드로 전환"}
+      onClick={() => setTheme(nextTheme)}
+      className={`relative inline-flex h-7 w-12 items-center rounded-full p-1 transition-colors ${
+        isDark ? "bg-tertiary-background" : "bg-secondary-background"
+      }`}
+    >
+      <span
+        className={`absolute left-1.5 text-[9px] text-tertiary transition-opacity ${
+          isDark ? "opacity-0" : "opacity-100"
         }`}
-        aria-label="Switch to light mode"
       >
-        Sun
-      </button>
-      <button
-        type="button"
-        onClick={() => setTheme("dark")}
-        className={`rounded-full px-3 py-1 text-sm transition-colors ${
-          isDark
-            ? "bg-background text-primary shadow-sm"
-            : "text-secondary hover:text-primary"
+        ☀
+      </span>
+      <span
+        className={`absolute right-1.5 text-[9px] text-tertiary transition-opacity ${
+          isDark ? "opacity-100" : "opacity-0"
         }`}
-        aria-label="Switch to dark mode"
       >
-        Moon
-      </button>
-    </div>
+        ☾
+      </span>
+      <span
+        className={`h-5 w-5 rounded-full transition-transform duration-200 ease-out ${
+          isDark ? "translate-x-5 bg-primary" : "translate-x-0 bg-primary"
+        }`}
+      />
+    </button>
   );
 }

@@ -27,10 +27,10 @@ export function HomeFilterChips({ selected, onSelect }: HomeFilterChipsProps) {
           type="button"
           role="tab"
           aria-selected={selected === option.value}
-          className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
+          className={`ui-hover rounded-full px-3 py-1.5 text-xs transition ${
             selected === option.value
-              ? "border-primary/70 bg-tertiary-background text-primary"
-              : "border-border text-secondary hover:border-tertiary hover:text-primary"
+              ? "bg-tertiary-background/70 font-semibold text-primary"
+              : "text-secondary hover:bg-secondary-background/70 hover:text-primary"
           }`}
           onClick={() => onSelect(option.value)}
         >
