@@ -58,8 +58,9 @@ jobs:
           cd deploy-repo
           find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
           cd ..
-          cp -r out/* deploy-repo/
+          cp -r out/. deploy-repo/
           cd deploy-repo
+          echo "Deployed files:"
           ls -la
 
       - name: Commit and push to GitHub Pages repository
