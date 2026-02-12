@@ -7,20 +7,28 @@ tags: iOS, Hot Reload
 published: true
 ---
 
+## 들어가며
 
-## iOS에서 불필요한 리소스를 줄이는 방법
+앱을 개발하다 보면, 작은 변경이 있을 때마다 재빌드하는 게 꽤 비효율적이에요.\
+Flutter를 개발할 때는 핫 리로드가 빌트인으로 들어있어서 정말 빠르게 개발할 수 있었거든요.\
+반면 iOS 개발에서는 모듈을 쪼개고 데모앱을 따로 만들어 빌드 속도를 줄이는 방식으로 해결해왔어요.
 
-앱 개발을 진행하면서 변경사항이 있을 때 재빌드 하는 것은 꽤 비효율적이다.\
-Flutter 개발을 할 때는 핫 리로드 기능이 빌트인 되어있어 빠르게 개발이 가능했다.\
-iOS 개발을 할 때는 모듈을 쪼개고, 데모앱을 만들어 빌드 속도를 낮추는 방법으로 해결해왔다.
+그러다 "iOS에서도 핫 리로드를 쓸 수 있으면 얼마나 좋을까?" 하는 생각이 들었고,\
+찾아보니 꽤 괜찮은 도구들이 있었어요.
 
 ---
 
-## Hot Reload를 위해 생산성 올리기
-[Inject](https://github.com/krzysztofzablocki/Inject)를 통해 iOS도 핫 리로드가 가능하다.\
-빌트인이 아니라 초기 설정이 조금 필요하지만 크게 어렵진 않다.
+## Hot Reload: Inject 도입
 
-또한 [Playbook](https://github.com/playbook-ui/playbook-ios)이라는 라이브러리도 존재하는데 시나리오를 등록하여 각 UI를 볼 수 있다.
+[Inject](https://github.com/krzysztofzablocki/Inject)를 사용하면 iOS에서도 핫 리로드가 가능해요.\
+빌트인은 아니라 초기 설정이 조금 필요하지만, 크게 어렵진 않았어요.
+
+---
+
+## UI 시나리오 관리: Playbook
+
+또 하나 유용했던 건 [Playbook](https://github.com/playbook-ui/playbook-ios)이라는 라이브러리예요.\
+시나리오를 등록하면 각 UI를 한눈에 볼 수 있어요.
 
 ```swift
 /// Playbook 예시 코드
@@ -44,4 +52,11 @@ Playbook.default.addScenarios(of: "Home") {
 }
 ```
 
-Playbook으로 시나리오를 등록하고, Inject로 Hot Reload를 하면 더욱 빠르게 개발이 가능하다.
+---
+
+## 마치며
+
+Playbook으로 시나리오를 등록하고, Inject로 핫 리로드를 걸면\
+작은 UI 수정에 재빌드할 필요 없이 바로 결과를 확인할 수 있어요.\
+Flutter에서 느꼈던 빠른 개발 경험을 iOS에서도 어느 정도 가져올 수 있었고,\
+체감 생산성이 확실히 달라졌어요.

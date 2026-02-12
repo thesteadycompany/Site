@@ -7,10 +7,10 @@ tags: iOS, Dependency Injection
 published: true
 ---
 
-## 의존성 주입 방식
-TCA를 주력으로 사용하다보니 [swift-dependencies](https://github.com/pointfreeco/)로 의존성 관리를 하고 있다.
+## 들어가며
 
-프로토콜 방식과 다르게 구조체+클로저를 통해 의존성을 다루고 있다.
+TCA를 주력으로 사용하다 보니 [swift-dependencies](https://github.com/pointfreeco/)로 의존성을 관리하고 있어요.\
+프로토콜 방식과 다르게, 구조체+클로저를 통해 의존성을 다루는 방식이에요.
 
 ```swift
 /// 구조체+클로저
@@ -26,8 +26,12 @@ protocol Provider {
 final class DefaultProvider: Provider {}
 ```
 
-## Swift Dependencies를 활용한 의존성 역전
-[swift-dependencies](https://github.com/pointfreeco/)는 이러한 의존성이 추상화 되지 않는 줄 알았는데 너무 잘 되고 있었다.
+---
+
+## 의존성 역전이 이렇게 잘 되는 줄 몰랐어요
+
+사실 처음에는 [swift-dependencies](https://github.com/pointfreeco/)로 의존성이 제대로 추상화되지 않을 줄 알았어요.\
+그런데 실제로 써보니 너무 잘 되고 있었어요.
 
 ```swift
 /// AuthClient 모듈
@@ -48,8 +52,14 @@ extension AuthClient: DependencyKey {
 }
 ```
 
-위와 같은 방식으로 모듈을 분리하고 그냥 사용하는 곳에서 구현체에 대한 모듈을 import하면 된다.
+위처럼 모듈을 분리하고, 사용하는 쪽에서 구현체 모듈을 import하면 돼요.
 
-이를 통해 사이즈가 큰 외부 라이브러리(e.g. Firebase)를 인터페이스 모듈로 분리하여 활용하고 있다.
+---
 
-[링크](https://github.com/pointfreeco/isowords/tree/main/Sources/ApiClient)를 참조하면 좋다.
+## 마치며
+
+이 방식을 통해 사이즈가 큰 외부 라이브러리(예: Firebase)를 인터페이스 모듈로 분리해서 활용하고 있어요.\
+빌드 시간도 줄어들었고, 테스트 환경도 훨씬 깔끔해졌어요.
+
+참고로 [isowords의 ApiClient 구조](https://github.com/pointfreeco/isowords/tree/main/Sources/ApiClient)를 보면\
+실제 프로젝트에서 어떻게 적용하는지 감을 잡을 수 있어요.
