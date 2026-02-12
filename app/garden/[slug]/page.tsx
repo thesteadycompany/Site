@@ -12,6 +12,15 @@ type GardenArticlePageProps = {
 };
 
 export const dynamicParams = false;
+const BASE_URL = "https://thesteadycompany.github.io";
+
+function toIsoDateString(dateString: string): string {
+  const normalized = dateString.includes("T")
+    ? dateString
+    : `${dateString.replace(" ", "T")}:00+09:00`;
+
+  return new Date(normalized).toISOString();
+}
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -28,9 +37,30 @@ export async function generateMetadata({ params }: GardenArticlePageProps): Prom
     };
   }
 
+  const url = `${BASE_URL}/garden/${slug}`;
+  const description = article.subtitle ?? article.title;
+
   return {
     title: article.title,
-    description: article.subtitle ?? article.title,
+    description,
+    keywords: article.tags,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: article.title,
+      description,
+      url,
+      type: "article",
+      publishedTime: toIsoDateString(article.date),
+      authors: [article.author],
+      tags: article.tags,
+    },
+    twitter: {
+      card: "summary",
+      title: article.title,
+      description,
+    },
   };
 }
 
@@ -42,8 +72,23 @@ export default async function GardenArticlePage({ params }: GardenArticlePagePro
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.subtitle ?? article.title,
+    author: {
+      "@type": "Person",
+      name: article.author,
+    },
+    datePublished: toIsoDateString(article.date),
+    keywords: article.tags.join(", "),
+    url: `${BASE_URL}/garden/${slug}`,
+  };
+
   return (
     <MainLayout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="mx-auto w-full max-w-3xl space-y-6 pt-6">
         <header className="space-y-3">
           <h1 className="scroll-mt-24 text-3xl font-bold text-primary sm:text-4xl">{article.title}</h1>

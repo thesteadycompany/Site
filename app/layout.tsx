@@ -9,12 +9,25 @@ export const metadata: Metadata = {
     template: "%s | THE STEADY COMPANY",
   },
   description: "Hogumachu's personal garden blog.",
+  keywords: ["개발 블로그", "iOS", "Swift", "AI", "프로그래밍", "THE STEADY COMPANY"],
+  alternates: {
+    canonical: "https://thesteadycompany.github.io",
+  },
   openGraph: {
     title: "THE STEADY COMPANY",
     description: "Hogumachu's personal garden blog.",
     url: "https://thesteadycompany.github.io",
     siteName: "THE STEADY COMPANY",
     type: "website",
+    locale: "ko_KR",
+  },
+  twitter: {
+    card: "summary",
+    title: "THE STEADY COMPANY",
+    description: "Hogumachu's personal garden blog.",
+  },
+  verification: {
+    google: "google6a751de03e3b3eb2.html",
   },
 };
 
