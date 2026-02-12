@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@import "highlight.js/styles/xcode.css";
+
+:root {
+  --background: #ffffff;
+  --secondary-background: #f7f7f7;
+  --tertiary-background: #f0f0f0;
+  --primary: #0a0a0a;
+  --secondary: #535353;
+  --tertiary: #848484;
+  --border: #e0e0e0;
+  --focus-ring: #2f6feb;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-secondary-background: var(--secondary-background);
+  --color-tertiary-background: var(--tertiary-background);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-border: var(--border);
+  --font-sans: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+[data-theme="dark"],
+.dark {
+  --background: #0a0a0a;
+  --secondary-background: #1a1a1a;
+  --tertiary-background: #2a2a2a;
+  --primary: #ffffff;
+  --secondary: #b5b5b5;
+  --tertiary: #848484;
+  --border: #333333;
+  color-scheme: dark;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/Pretendard-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background: var(--background);
+  color: var(--primary);
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+.skip-link {
+  position: fixed;
+  top: -64px;
+  left: 12px;
+  z-index: 60;
+  border-radius: 0.5rem;
+  background: var(--background);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.8rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  top: 12px;
+}
+
+.prose-content h1,
+.prose-content h2,
+.prose-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-wrap: balance;
+}
+
+.prose-content p,
+.prose-content li,
+.prose-content blockquote {
+  line-height: 1.9;
+  color: var(--secondary);
+}
+
+.prose-content ul,
+.prose-content ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.prose-content pre {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.prose-content code {
+  font-family: var(--font-mono);
+}
+
+.prose-content p code,
+.prose-content li code {
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.35rem;
+  background: var(--secondary-background);
+  color: var(--primary);
+}
+
+.dark .hljs {
+  background: #1a1a1a;
+  color: #d4d4d4;
+}
+
+.prose-content hr {
+  margin: 1.6rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

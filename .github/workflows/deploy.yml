@@ -1,9 +1,9 @@
 name: Deploy
+
 on:
   push:
     branches:
       - main
-    
   workflow_dispatch:
 
 defaults:
@@ -16,34 +16,35 @@ permissions:
 jobs:
   build-and-deploy:
     name: Build and Deploy to GitHub Pages
-    runs-on: macos-15
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        
-      - name: Get Swift version
-        run: swift --version
-        
-      - name: Select Xcode
-        run: sudo xcode-select -s '/Applications/Xcode_26.0.app/Contents/Developer'
-     
-      - name: Build Swift package
-        run: swift build --configuration release
-     
-      - name: Build Ignite site
-        run: .build/release/Docs
-      
-      - name: Verify Build folder exists
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js static site
+        run: npm run build
+
+      - name: Verify out folder exists
         run: |
-          if [ ! -d "Build" ]; then
-            echo "Error: Build folder was not created"
+          if [ ! -d "out" ]; then
+            echo "Error: out folder was not created"
             exit 1
           fi
-          echo "Build folder contents:"
-          ls -la Build/
-          echo "Build folder size:"
-          du -sh Build/
-      
+          echo "out folder contents:"
+          ls -la out/
+          echo "out folder size:"
+          du -sh out/
+
       - name: Checkout target repository
         uses: actions/checkout@v6
         with:
@@ -51,42 +52,23 @@ jobs:
           token: ${{ secrets.PAT }}
           path: deploy-repo
           ref: main
-      
-      - name: Copy Build files to target repository
+
+      - name: Copy out files to target repository
         run: |
-          # Verify Build folder exists before copying
-          if [ ! -d "Build" ]; then
-            echo "Error: Build folder does not exist in workspace"
-            echo "Current directory: $(pwd)"
-            echo "Directory contents:"
-            ls -la
-            exit 1
-          fi
-          
-          echo "Build folder found. Contents:"
-          ls -la Build/
-          
-          # Remove all existing files except .git from deploy-repo
           cd deploy-repo
-          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
-          
-          # Copy all files from Build folder (using absolute path from workspace root)
+          find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
           cd ..
-          cp -r Build/* deploy-repo/
-          
-          # Verify files were copied
+          cp -r out/* deploy-repo/
           cd deploy-repo
-          echo "Files copied successfully:"
           ls -la
-      
+
       - name: Commit and push to GitHub Pages repository
         run: |
           cd deploy-repo
           git config user.name "Buildbot"
           git config user.email "buildbot@users.noreply.github.com"
           git add -A
-          
-          # Check if there are changes to commit
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

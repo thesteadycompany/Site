@@ -1,0 +1,28 @@
+import Link from "next/link";
+import type { ArticleSummary } from "@/lib/articles";
+
+type ArticlePreviewProps = {
+  article: ArticleSummary;
+};
+
+export function ArticlePreview({ article }: ArticlePreviewProps) {
+  return (
+    <article className="group rounded-2xl border border-border bg-secondary-background p-5 transition-transform transition-colors hover:-translate-y-0.5 hover:border-tertiary">
+      <Link href={`/garden/${article.slug}`} className="block space-y-3">
+        <p className="text-sm text-tertiary">{article.date}</p>
+        <h2 className="text-xl font-semibold text-primary">{article.title}</h2>
+        {article.subtitle ? <p className="text-sm text-secondary">{article.subtitle}</p> : null}
+        <ul className="flex flex-wrap gap-2 pt-1">
+          {article.tags.map((tag) => (
+            <li
+              key={`${article.slug}-${tag}`}
+              className="rounded-full border border-border px-2.5 py-1 text-xs text-secondary"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </Link>
+    </article>
+  );
+}
