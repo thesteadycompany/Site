@@ -1,6 +1,6 @@
 # THE STEADY COMPANY
 
-Hogumachu의 개인 블로그. 정제하지 않은 짧은 글을 기록하는 Garden을 운영합니다.
+Hogumachu의 개인 블로그. 짧은 실험 노트는 Garden, 정제된 장문은 Article로 분리해 운영합니다.
 
 > https://thesteadycompany.github.io
 
@@ -59,17 +59,25 @@ npm run build   # out/ 디렉토리에 정적 파일 생성
 │   │   ├── page.tsx      # Garden 목록
 │   │   └── [slug]/
 │   │       └── page.tsx  # 개별 글
+│   ├── article/
+│   │   ├── page.tsx      # Article 목록
+│   │   └── [slug]/
+│   │       └── page.tsx  # 개별 글
 │   ├── layout.tsx        # Root Layout (ThemeProvider)
 │   └── globals.css       # 테마 변수, 타이포그래피
 ├── components/           # 공용 컴포넌트
-├── content/garden/       # Markdown 글 (YAML frontmatter)
+├── content/garden/       # Garden Markdown 글 (coverImage 필수)
+├── content/article/      # Article Markdown 글 (coverImage 선택)
 ├── lib/articles.ts       # 마크다운 파싱 유틸
+├── lib/personal-articles.ts
 ├── public/fonts/         # Pretendard woff2
 ├── .agents/skills/       # Agent Skills (Vercel)
 └── .github/workflows/    # CI/CD
 ```
 
-## Writing a New Article
+## Writing Content
+
+### Garden (`content/garden`)
 
 `content/garden/` 에 마크다운 파일을 추가하면 빌드 시 자동으로 페이지가 생성됩니다.
 **커버 이미지 생성은 필수 단계**입니다. 본문 작성 후 `content/garden/_cover-image-workflow.md`를 따라
@@ -90,6 +98,23 @@ published: true
 ```
 
 작성 템플릿은 `content/garden/_article-template.md` 에 있습니다.
+
+### Article (`content/article`)
+
+`content/article/` 는 장문 아카이브 섹션입니다. `coverImage`는 선택 항목이며 생략해도 페이지가 생성됩니다.
+
+```markdown
+---
+author: hogumachu
+title: 글 제목
+subtitle: 부제목
+date: 2026-02-12 21:00
+tags: Tag1, Tag2
+published: true
+---
+
+본문 내용...
+```
 
 ## Cover Image Workflow
 

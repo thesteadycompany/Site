@@ -13,15 +13,9 @@ export function NavigationBar() {
           <Link href="/garden" className="whitespace-nowrap transition-colors hover:text-primary">
             Garden
           </Link>
-          <a
-            href="https://hogumachu.github.io"
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="Personal Blog (opens in a new tab)"
-            className="whitespace-nowrap transition-colors hover:text-primary"
-          >
-            Personal Blog
-          </a>
+          <Link href="/article" className="whitespace-nowrap transition-colors hover:text-primary">
+            Article
+          </Link>
         </nav>
       </div>
     </header>

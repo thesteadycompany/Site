@@ -6,9 +6,10 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { markdownComponents } from "@/components/markdown-components";
 import { MainLayout } from "@/components/MainLayout";
-import { DEFAULT_COVER_IMAGE, getAllArticles, getArticleBySlug } from "@/lib/articles";
+import { getAllPersonalArticles, getPersonalArticleBySlug } from "@/lib/personal-articles";
+import { remarkSoftBreaks } from "@/lib/remark-soft-breaks";
 
-type GardenArticlePageProps = {
+type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
 
@@ -32,13 +33,13 @@ function toIsoDateString(dateString: string): string {
 }
 
 export async function generateStaticParams() {
-  const articles = await getAllArticles();
+  const articles = await getAllPersonalArticles();
   return articles.map((article) => ({ slug: article.slug }));
 }
 
-export async function generateMetadata({ params }: GardenArticlePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getArticleBySlug(slug);
+  const article = await getPersonalArticleBySlug(slug);
 
   if (!article) {
     return {
@@ -46,10 +47,9 @@ export async function generateMetadata({ params }: GardenArticlePageProps): Prom
     };
   }
 
-  const url = `${BASE_URL}/garden/${slug}`;
+  const url = `${BASE_URL}/article/${slug}`;
   const description = article.subtitle ?? article.title;
-  const coverImage = article.coverImage || DEFAULT_COVER_IMAGE;
-  const coverImageUrl = toAbsoluteUrl(coverImage);
+  const images = article.coverImage ? [toAbsoluteUrl(article.coverImage)] : undefined;
 
   return {
     title: article.title,
@@ -63,30 +63,23 @@ export async function generateMetadata({ params }: GardenArticlePageProps): Prom
       description,
       url,
       type: "article",
-      images: [
-        {
-          url: coverImageUrl,
-          width: 1200,
-          height: 675,
-          alt: `${article.title} cover image`,
-        },
-      ],
+      images,
       publishedTime: toIsoDateString(article.date),
       authors: [article.author],
       tags: article.tags,
     },
     twitter: {
-      card: "summary_large_image",
+      card: article.coverImage ? "summary_large_image" : "summary",
       title: article.title,
       description,
-      images: [coverImageUrl],
+      images,
     },
   };
 }
 
-export default async function GardenArticlePage({ params }: GardenArticlePageProps) {
+export default async function ArticleDetailPage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = await getArticleBySlug(slug);
+  const article = await getPersonalArticleBySlug(slug);
 
   if (!article) {
     notFound();
@@ -103,24 +96,26 @@ export default async function GardenArticlePage({ params }: GardenArticlePagePro
     },
     datePublished: toIsoDateString(article.date),
     keywords: article.tags.join(", "),
-    url: `${BASE_URL}/garden/${slug}`,
-    image: toAbsoluteUrl(article.coverImage),
+    url: `${BASE_URL}/article/${slug}`,
+    image: article.coverImage ? toAbsoluteUrl(article.coverImage) : undefined,
   };
 
   return (
     <MainLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="mx-auto w-full max-w-3xl space-y-6 pt-6">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border">
-          <Image
-            src={article.coverImage}
-            alt={`${article.title} cover image`}
-            fill
-            unoptimized
-            priority
-            className="object-cover"
-          />
-        </div>
+        {article.coverImage ? (
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border">
+            <Image
+              src={article.coverImage}
+              alt={`${article.title} cover image`}
+              fill
+              unoptimized
+              priority
+              className="object-cover"
+            />
+          </div>
+        ) : null}
         <header className="space-y-3">
           <h1 className="scroll-mt-24 text-3xl font-bold text-primary sm:text-4xl">{article.title}</h1>
           {article.subtitle ? <p className="text-lg text-secondary">{article.subtitle}</p> : null}
@@ -141,7 +136,11 @@ export default async function GardenArticlePage({ params }: GardenArticlePagePro
         </header>
 
         <div className="prose-content">
-          <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]} components={markdownComponents}>
+          <Markdown
+            remarkPlugins={[remarkGfm, remarkSoftBreaks]}
+            rehypePlugins={[rehypeHighlight]}
+            components={markdownComponents}
+          >
             {article.content}
           </Markdown>
         </div>

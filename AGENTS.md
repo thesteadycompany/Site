@@ -35,11 +35,13 @@
 
 ## 콘텐츠 생성 규칙
 
-- 새 아티클을 생성할 때는 **커버 이미지 생성까지 작업 범위에 반드시 포함**해요.
-- 본문만 작성하고 이미지를 생략하지 않아요.
-- 커버 이미지는 `content/garden/_cover-image-workflow.md`를 따라 생성해요.
-- 글 frontmatter에 아래 항목을 반드시 포함해요.
+- `content/garden`에 새 글을 생성할 때는 **커버 이미지 생성까지 작업 범위에 반드시 포함**해요.
+- `content/garden` 글은 본문만 작성하고 이미지를 생략하지 않아요.
+- `content/garden` 커버 이미지는 `content/garden/_cover-image-workflow.md`를 따라 생성해요.
+- `content/garden` 글 frontmatter에는 아래 항목을 반드시 포함해요.
 
 ```yaml
 coverImage: /images/covers/{slug}-cover.jpg
 ```
+
+- `content/article` 글은 장문 아카이브용으로 운영하며 `coverImage`를 **선택 항목**으로 처리해요.

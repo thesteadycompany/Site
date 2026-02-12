@@ -36,7 +36,7 @@ export default async function Home() {
 
   return (
     <MainLayout>
-      <div className="home-grid-background">
+      <div>
         <section className="mx-auto max-w-5xl space-y-10 pt-4 sm:space-y-14">
           <div className="home-reveal home-stagger-1 home-surface home-hero">
             <p className="text-xs font-semibold tracking-[0.2em] text-tertiary">THE STEADY COMPANY</p>
@@ -138,18 +138,12 @@ export default async function Home() {
               <p className="text-xs font-semibold tracking-[0.16em] text-tertiary">MORE</p>
               <h2 className="mt-2 text-2xl font-semibold text-primary">긴 글과 기록</h2>
               <p className="mt-3 text-sm leading-7 text-secondary">
-                정제된 장문 아카이브는 개인 블로그에 따로 모아 두었습니다. 최신 실험 노트와 함께 읽으면 맥락이
-                더 또렷해집니다.
+                정제된 장문 아카이브를 이 사이트 안에서 함께 제공합니다. Garden의 최신 실험 노트와 Article의
+                긴 글을 오가며 읽으면 맥락이 더 또렷해집니다.
               </p>
-              <a
-                href="https://hogumachu.github.io"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Personal Blog (opens in a new tab)"
-                className="home-secondary-cta mt-5 inline-flex"
-              >
-                Personal Blog 이동
-              </a>
+              <Link href="/article" className="home-secondary-cta mt-5 inline-flex">
+                Article 보러가기
+              </Link>
             </div>
           </section>
         </section>
