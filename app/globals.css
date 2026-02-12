@@ -198,6 +198,191 @@ button {
   border-top: 1px solid var(--border);
 }
 
+.home-grid-background {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-surface {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--secondary-background) 82%, var(--background));
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--background) 70%, transparent) inset,
+    0 16px 40px color-mix(in srgb, #000000 20%, transparent);
+}
+
+.home-hero {
+  padding: 1.5rem 1.1rem;
+}
+
+.home-primary-cta,
+.home-secondary-cta,
+.home-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.home-primary-cta {
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: var(--background);
+  border-color: color-mix(in srgb, var(--primary) 75%, var(--border));
+}
+
+.home-secondary-cta {
+  padding: 0.6rem 0.95rem;
+  font-size: 0.875rem;
+  color: var(--secondary);
+  background: transparent;
+}
+
+.home-tag-chip {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--tertiary-background) 52%, transparent);
+}
+
+.home-primary-cta:hover,
+.home-secondary-cta:hover,
+.home-tag-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--tertiary);
+  color: var(--primary);
+}
+
+.home-primary-cta:hover {
+  background: color-mix(in srgb, var(--primary) 90%, var(--background));
+}
+
+.home-card {
+  transition:
+    transform 0.28s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--tertiary) 68%, var(--border));
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--background) 74%, transparent) inset,
+    0 22px 44px color-mix(in srgb, #000000 28%, transparent);
+}
+
+.home-line-clamp-1,
+.home-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-line-clamp-1 {
+  -webkit-line-clamp: 1;
+}
+
+.home-line-clamp-2 {
+  -webkit-line-clamp: 2;
+}
+
+.home-reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.992);
+  filter: blur(6px);
+  animation: home-fade-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.home-stagger-1 {
+  animation-delay: 0.06s;
+}
+
+.home-stagger-2 {
+  animation-delay: 0.18s;
+}
+
+.home-stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.home-stagger-4 {
+  animation-delay: 0.42s;
+}
+
+.home-latest-grid > article:nth-child(1) {
+  animation-delay: 0.22s;
+}
+
+.home-latest-grid > article:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.home-latest-grid > article:nth-child(3) {
+  animation-delay: 0.38s;
+}
+
+.home-latest-grid > article:nth-child(4) {
+  animation-delay: 0.46s;
+}
+
+.home-hero-title {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: home-inner-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.home-hero-copy {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: home-inner-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+}
+
+.home-hero-actions {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: home-inner-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.44s forwards;
+}
+
+@keyframes home-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.992);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes home-inner-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
+  .home-hero {
+    padding: 2.4rem 2rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -206,5 +391,14 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .home-reveal,
+  .home-hero-title,
+  .home-hero-copy,
+  .home-hero-actions {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
   }
 }
