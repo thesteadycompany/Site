@@ -10,13 +10,33 @@ Hogumachu의 개인 블로그. 짧은 실험 노트는 Garden, 정제된 장문�
 AI 코딩 에이전트와 대화하며 설계부터 구현, 배포까지 진행했고,
 [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)의 스킬들을 적극 활용했습니다.
 
-### 사용한 Agent Skills
+### 사용 중인 Agent Skills
+
+**개발 (Vercel)** — [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)
 
 | Skill | 용도 |
 |---|---|
-| [react-best-practices](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) | React/Next.js 성능 최적화 가이드 (57 rules) |
-| [composition-patterns](https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns) | 컴포넌트 아키텍처 & 합성 패턴 |
-| [web-design-guidelines](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines) | 접근성, UX, 다크 모드 등 UI 품질 감사 |
+| react-best-practices | React/Next.js 성능 최적화 (57 rules) |
+| composition-patterns | 컴포넌트 아키텍처 & 합성 패턴 |
+| web-design-guidelines | 접근성, UX, 다크 모드 등 UI 품질 감사 |
+
+**마케팅·콘텐츠 (Marketing)** — [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
+
+| Skill | 용도 |
+|---|---|
+| content-strategy | 콘텐츠 전략, 주제 선정, 캘린더 |
+| copy-editing | 글 퇴고, 가독성 개선 |
+| copywriting | 메타/OG 문구, 짧은 카피 |
+| page-cro | 페이지 전환·구성 최적화 |
+| programmatic-seo | SEO 자동화, URL/메타 패턴 |
+| analytics-tracking | GA/GTM 등 트래킹 설정 |
+| marketing-psychology | 독자 참여·심리 원칙 |
+
+**기술 블로그 작성** — [skill-zero/s](https://github.com/skill-zero/s)
+
+| Skill | 용도 |
+|---|---|
+| technical-blog-writing | 기술 블로그 글쓰기 가이드 |
 
 ## Tech Stack
 
