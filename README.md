@@ -72,6 +72,8 @@ npm run build   # out/ 디렉토리에 정적 파일 생성
 ## Writing a New Article
 
 `content/garden/` 에 마크다운 파일을 추가하면 빌드 시 자동으로 페이지가 생성됩니다.
+**커버 이미지 생성은 필수 단계**입니다. 본문 작성 후 `content/garden/_cover-image-workflow.md`를 따라
+`public/images/covers/{slug}-cover.jpg`를 생성하고 frontmatter `coverImage`를 설정하세요.
 
 ```markdown
 ---

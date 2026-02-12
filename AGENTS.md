@@ -32,3 +32,14 @@
 - 키보드 포커스 스타일을 명확히 추가
 - 로그인 페이지 UI에만 영향
 ```
+
+## 콘텐츠 생성 규칙
+
+- 새 아티클을 생성할 때는 **커버 이미지 생성까지 작업 범위에 반드시 포함**해요.
+- 본문만 작성하고 이미지를 생략하지 않아요.
+- 커버 이미지는 `content/garden/_cover-image-workflow.md`를 따라 생성해요.
+- 글 frontmatter에 아래 항목을 반드시 포함해요.
+
+```yaml
+coverImage: /images/covers/{slug}-cover.jpg
+```
