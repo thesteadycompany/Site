@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# THE STEADY COMPANY
+
+Hogumachu의 개인 블로그. 정제하지 않은 짧은 글을 기록하는 Garden을 운영합니다.
+
+> https://thesteadycompany.github.io
+
+## Vibe Coding
+
+이 프로젝트는 **바이브 코딩(Vibe Coding)** 으로 만들어졌습니다.
+AI 코딩 에이전트와 대화하며 설계부터 구현, 배포까지 진행했고,
+[vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)의 스킬들을 적극 활용했습니다.
+
+### 사용한 Agent Skills
+
+| Skill | 용도 |
+|---|---|
+| [react-best-practices](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) | React/Next.js 성능 최적화 가이드 (57 rules) |
+| [composition-patterns](https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns) | 컴포넌트 아키텍처 & 합성 패턴 |
+| [web-design-guidelines](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines) | 접근성, UX, 다크 모드 등 UI 품질 감사 |
+
+## Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org) (App Router, Static Export) |
+| Language | [TypeScript 5](https://www.typescriptlang.org) |
+| UI | [React 19](https://react.dev) |
+| Styling | [Tailwind CSS 4](https://tailwindcss.com) |
+| Font | [Pretendard](https://cactus.tistory.com/306) (self-hosted woff2) |
+| Markdown | [react-markdown](https://github.com/remarkjs/react-markdown) + remark-gfm + rehype-highlight |
+| Theme | [next-themes](https://github.com/pacocoursey/next-themes) (Light / Dark / System) |
+| Deploy | GitHub Actions -> GitHub Pages |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 에서 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # out/ 디렉토리에 정적 파일 생성
+```
 
-## Learn More
+`main` 브랜치에 push하면 GitHub Actions가 자동으로 빌드 후
+[thesteadycompany.github.io](https://thesteadycompany.github.io) 에 배포합니다.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+.
+├── app/                  # Next.js App Router 페이지
+│   ├── page.tsx          # Home
+│   ├── garden/
+│   │   ├── page.tsx      # Garden 목록
+│   │   └── [slug]/
+│   │       └── page.tsx  # 개별 글
+│   ├── layout.tsx        # Root Layout (ThemeProvider)
+│   └── globals.css       # 테마 변수, 타이포그래피
+├── components/           # 공용 컴포넌트
+├── content/garden/       # Markdown 글 (YAML frontmatter)
+├── lib/articles.ts       # 마크다운 파싱 유틸
+├── public/fonts/         # Pretendard woff2
+├── .agents/skills/       # Agent Skills (Vercel)
+└── .github/workflows/    # CI/CD
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Writing a New Article
 
-## Deploy on Vercel
+`content/garden/` 에 마크다운 파일을 추가하면 빌드 시 자동으로 페이지가 생성됩니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```markdown
+---
+author: hogumachu
+title: 글 제목
+subtitle: 부제목
+date: 2026-02-12 21:00
+tags: Tag1, Tag2
+published: true
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+본문 내용...
+```
+
+## License
+
+MIT
