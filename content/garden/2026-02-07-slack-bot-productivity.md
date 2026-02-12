@@ -2,6 +2,7 @@
 author: hogumachu
 title: 바이브 코딩으로 만든 슬랙 봇의 힘
 subtitle: Node.js 모르는 상태에서 몇 시간 만에 지라 통합 봇 만들기
+coverImage: /images/covers/2026-02-07-slack-bot-productivity-cover-v6-garden-warm.jpg
 date: 2026-02-07 22:00
 tags: AI, Productivity, Slack, Bot, VibeCoding, Node.js, Automation
 published: true

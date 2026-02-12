@@ -5,7 +5,7 @@ import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { MainLayout } from "@/components/MainLayout";
-import { getAllArticles, getArticleBySlug } from "@/lib/articles";
+import { DEFAULT_COVER_IMAGE, getAllArticles, getArticleBySlug } from "@/lib/articles";
 
 type GardenArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -13,6 +13,14 @@ type GardenArticlePageProps = {
 
 export const dynamicParams = false;
 const BASE_URL = "https://thesteadycompany.github.io";
+
+function toAbsoluteUrl(urlPath: string): string {
+  if (urlPath.startsWith("http://") || urlPath.startsWith("https://")) {
+    return urlPath;
+  }
+
+  return new URL(urlPath, BASE_URL).toString();
+}
 
 function toIsoDateString(dateString: string): string {
   const normalized = dateString.includes("T")
@@ -39,6 +47,8 @@ export async function generateMetadata({ params }: GardenArticlePageProps): Prom
 
   const url = `${BASE_URL}/garden/${slug}`;
   const description = article.subtitle ?? article.title;
+  const coverImage = article.coverImage || DEFAULT_COVER_IMAGE;
+  const coverImageUrl = toAbsoluteUrl(coverImage);
 
   return {
     title: article.title,
@@ -52,14 +62,23 @@ export async function generateMetadata({ params }: GardenArticlePageProps): Prom
       description,
       url,
       type: "article",
+      images: [
+        {
+          url: coverImageUrl,
+          width: 1200,
+          height: 675,
+          alt: `${article.title} cover image`,
+        },
+      ],
       publishedTime: toIsoDateString(article.date),
       authors: [article.author],
       tags: article.tags,
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: article.title,
       description,
+      images: [coverImageUrl],
     },
   };
 }
@@ -84,12 +103,23 @@ export default async function GardenArticlePage({ params }: GardenArticlePagePro
     datePublished: toIsoDateString(article.date),
     keywords: article.tags.join(", "),
     url: `${BASE_URL}/garden/${slug}`,
+    image: toAbsoluteUrl(article.coverImage),
   };
 
   return (
     <MainLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="mx-auto w-full max-w-3xl space-y-6 pt-6">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border">
+          <Image
+            src={article.coverImage}
+            alt={`${article.title} cover image`}
+            fill
+            unoptimized
+            priority
+            className="object-cover"
+          />
+        </div>
         <header className="space-y-3">
           <h1 className="scroll-mt-24 text-3xl font-bold text-primary sm:text-4xl">{article.title}</h1>
           {article.subtitle ? <p className="text-lg text-secondary">{article.subtitle}</p> : null}

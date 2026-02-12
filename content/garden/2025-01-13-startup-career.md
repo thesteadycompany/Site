@@ -2,6 +2,7 @@
 author: hogumachu
 title: 스타트업에서 iOS 개발자로 성장하는 방법?
 subtitle: AI 시대, 네이티브 개발자의 존재 이유를 고민하며
+coverImage: /images/covers/2025-01-13-startup-career-cover.jpg
 date: 2025-01-09 21:00
 tags: iOS, Career, Startup, AI
 published: true

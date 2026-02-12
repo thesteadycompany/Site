@@ -2,6 +2,7 @@
 author: hogumachu
 title: FirebaseFirestore 모듈 추상화
 subtitle: Timestamp 디코딩 문제와 해결 방법
+coverImage: /images/covers/2025-01-08-firestore-interface-cover.jpg
 date: 2025-01-08 21:00
 tags: iOS, Firebase, Dependency Injection
 published: true

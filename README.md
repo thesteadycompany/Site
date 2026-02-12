@@ -78,12 +78,30 @@ npm run build   # out/ 디렉토리에 정적 파일 생성
 author: hogumachu
 title: 글 제목
 subtitle: 부제목
+coverImage: /images/covers/{slug}-cover.jpg
 date: 2026-02-12 21:00
 tags: Tag1, Tag2
 published: true
 ---
 
 본문 내용...
+```
+
+작성 템플릿은 `content/garden/_article-template.md` 에 있습니다.
+
+## Cover Image Workflow
+
+`baoyu-cover-image` 스킬 기반으로 16:9 커버 이미지를 생성합니다.
+
+- 스타일 가드레일: `content/garden/_cover-style.md`
+- 생성 프로토콜: `content/garden/_cover-image-workflow.md`
+- 기본 fallback 이미지: `public/images/covers/default-cover.jpg`
+- 스타일 앵커: `public/images/covers/references/`
+
+설치(완료 시 Codex 재시작 권장):
+
+```bash
+npx skills add https://github.com/jimliu/baoyu-skills --skill baoyu-cover-image -y -g
 ```
 
 ## License

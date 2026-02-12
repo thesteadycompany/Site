@@ -2,6 +2,7 @@
 author: hogumachu
 title: AI에 대한 개인적인 생각
 subtitle: Cursor? Claude? 어떤 것이 좋을까?
+coverImage: /images/covers/2025-01-06-ai-for-ios-developer-cover.jpg
 date: 2025-01-06 21:00
 tags: iOS, AI
 published: true

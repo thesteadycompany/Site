@@ -2,6 +2,7 @@
 author: hogumachu
 title: 로컬 모델과 Opencode를 만져보며 느낀 것
 subtitle: Product Engineer 시대로 가는 감각
+coverImage: /images/covers/2026-01-19-opencode-local-model-cover.jpg
 date: 2026-01-19 21:00
 tags: AI, LLM, iOS, Productivity, Tooling
 published: true

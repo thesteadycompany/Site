@@ -2,6 +2,7 @@
 author: hogumachu
 title: Swift Dependencies 잘 활용하기
 subtitle: 추상화를 통해 빌드 시간 절약하기
+coverImage: /images/covers/2025-01-05-swift-dependencies-cover.jpg
 date: 2025-01-05 19:00
 tags: iOS, Dependency Injection
 published: true

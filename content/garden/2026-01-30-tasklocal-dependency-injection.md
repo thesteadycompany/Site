@@ -2,6 +2,7 @@
 author: hogumachu
 title: TaskLocal로 스레드 안전한 의존성 주입하기
 subtitle: 주입하기 애매한 Date, UUID, Locale을 컨텍스트로 다루는 법
+coverImage: /images/covers/2026-01-30-tasklocal-dependency-injection-cover.jpg
 date: 2026-01-30 16:30
 tags: Swift, iOS, Dependency Injection, TaskLocal, Testing
 published: true

@@ -2,6 +2,7 @@
 author: hogumachu
 title: 외부 모듈 의존성 추상화 이후의 성과와 다음 고민
 subtitle: 빌드 속도 개선과 Mock 전략의 한계
+coverImage: /images/covers/2025-01-15-external-dependency-abstraction-cover.jpg
 date: 2025-01-15 23:10
 tags: iOS, Architecture, Modularization, Build, Mock
 published: true

@@ -2,6 +2,7 @@
 author: hogumachu
 title: 생산성 올리는 방법 (Hot Reload)
 subtitle: Inject를 이용하여 생산성 올리기
+coverImage: /images/covers/2025-01-04-hot-reload-cover.jpg
 date: 2025-01-04 09:00
 tags: iOS, Hot Reload
 published: true

@@ -1,13 +1,17 @@
 import fs from "node:fs/promises";
+import fsSync from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
 const ARTICLES_DIRECTORY = path.join(process.cwd(), "content", "garden");
+const PUBLIC_DIRECTORY = path.join(process.cwd(), "public");
+export const DEFAULT_COVER_IMAGE = "/images/covers/default-cover.jpg";
 
 type ArticleFrontmatter = {
   author: string;
   title: string;
   subtitle?: string;
+  coverImage?: string;
   date: string;
   tags: string;
   published: boolean;
@@ -18,6 +22,7 @@ export type Article = {
   author: string;
   title: string;
   subtitle?: string;
+  coverImage: string;
   date: string;
   tags: string[];
   published: boolean;
@@ -27,6 +32,10 @@ export type Article = {
 export type ArticleSummary = Omit<Article, "content">;
 
 function parseTags(rawTags: string): string[] {
+  if (!rawTags) {
+    return [];
+  }
+
   return rawTags
     .split(",")
     .map((tag) => tag.trim())
@@ -45,6 +54,37 @@ function toComparableTime(dateString: string): number {
   return Number.isNaN(date.getTime()) ? 0 : date.getTime();
 }
 
+function doesLocalCoverImageExist(coverImagePath: string): boolean {
+  const normalizedPath = coverImagePath.split(/[?#]/, 1)[0];
+  if (!normalizedPath.startsWith("/") || normalizedPath.includes("..")) {
+    return false;
+  }
+
+  const absolutePath = path.join(PUBLIC_DIRECTORY, normalizedPath.replace(/^\//, ""));
+  return fsSync.existsSync(absolutePath);
+}
+
+function resolveCoverImage(rawCoverImage?: string): string {
+  if (!rawCoverImage) {
+    return DEFAULT_COVER_IMAGE;
+  }
+
+  const trimmed = rawCoverImage.trim();
+  if (!trimmed) {
+    return DEFAULT_COVER_IMAGE;
+  }
+
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed;
+  }
+
+  if (!doesLocalCoverImageExist(trimmed)) {
+    return DEFAULT_COVER_IMAGE;
+  }
+
+  return trimmed;
+}
+
 function toArticle(fileName: string, fileContent: string): Article {
   const slug = toSlug(fileName);
   const { data, content } = matter(fileContent);
@@ -55,6 +95,7 @@ function toArticle(fileName: string, fileContent: string): Article {
     author: frontmatter.author,
     title: frontmatter.title,
     subtitle: frontmatter.subtitle,
+    coverImage: resolveCoverImage(frontmatter.coverImage),
     date: frontmatter.date,
     tags: parseTags(frontmatter.tags),
     published: frontmatter.published,
@@ -64,7 +105,7 @@ function toArticle(fileName: string, fileContent: string): Article {
 
 export async function getAllArticles(): Promise<ArticleSummary[]> {
   const fileNames = await fs.readdir(ARTICLES_DIRECTORY);
-  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith(".md"));
+  const markdownFiles = fileNames.filter((fileName) => fileName.endsWith(".md") && !fileName.startsWith("_"));
 
   const allArticles = await Promise.all(
     markdownFiles.map(async (fileName) => {
@@ -81,6 +122,7 @@ export async function getAllArticles(): Promise<ArticleSummary[]> {
       author: article.author,
       title: article.title,
       subtitle: article.subtitle,
+      coverImage: article.coverImage,
       date: article.date,
       tags: article.tags,
       published: article.published,

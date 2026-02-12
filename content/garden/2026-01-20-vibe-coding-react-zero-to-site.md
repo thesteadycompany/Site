@@ -2,6 +2,7 @@
 author: hogumachu
 title: 바이브 코딩으로 블로그 사이트 만들기
 subtitle: Oh My OpenCode로 2시간 만에 thevibecompany.github.io 찍어내기
+coverImage: /images/covers/2026-01-20-vibe-coding-react-zero-to-site-cover.jpg
 date: 2026-01-20 22:40
 tags: AI, Frontend, GPT, Productivity, VibeCoding
 published: true

@@ -2,6 +2,7 @@
 author: hogumachu
 title: 모듈 목적에 맞게 나누기
 subtitle: 단일 패키지 실험과 멀티 패키지로의 회귀
+coverImage: /images/covers/2025-01-14-module-by-purpose-cover.jpg
 date: 2025-01-14 21:00
 tags: iOS, Modularization, SwiftPM, Architecture
 published: true

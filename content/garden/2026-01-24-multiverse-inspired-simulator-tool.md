@@ -2,6 +2,7 @@
 author: hogumachu
 title: 개발자 생산성을 위한 앱
 subtitle: 일반 앱에서 툴로 방향을 튼 날의 기록
+coverImage: /images/covers/2026-01-24-multiverse-inspired-simulator-tool-cover.jpg
 date: 2026-01-24 16:30
 tags: AI, iOS, Productivity, Simulator, Tooling
 published: true

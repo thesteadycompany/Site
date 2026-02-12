@@ -2,6 +2,7 @@
 author: hogumachu
 title: 1인 또는 소규모 환경에서도 모듈을 열심히 나눠야 하는 이유
 subtitle: 안전하면서 빠른 속도를 유지하는 방법
+coverImage: /images/covers/2025-01-16-why-modularization-even-small-teams-cover.jpg
 date: 2025-01-16 22:00
 tags: iOS, Modularization, Architecture, Productivity, Build
 published: true

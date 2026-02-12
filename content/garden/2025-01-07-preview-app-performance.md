@@ -2,6 +2,7 @@
 author: hogumachu
 title: Preview 앱 활용
 subtitle: 모듈 추상화를 하면 어느 정도 시간이 절약될까?
+coverImage: /images/covers/2025-01-07-preview-app-performance-cover.jpg
 date: 2025-01-07 21:00
 tags: iOS, Performance, Dependency Injection
 published: true
