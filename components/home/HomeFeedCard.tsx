@@ -36,7 +36,7 @@ export function HomeFeedCard({ item }: HomeFeedCardProps) {
           {item.subtitle ? <p className="mt-1 line-clamp-2 text-sm text-secondary">{item.subtitle}</p> : null}
           <ul className="mt-2 flex flex-wrap gap-1.5">
             {item.tags.slice(0, 3).map((tag) => (
-              <li key={`${item.slug}-${tag}`} className="rounded-full bg-secondary-background/70 px-2 py-0.5 text-[11px] text-secondary">
+              <li key={`${item.slug}-${tag}`} className="rounded-full bg-secondary-background px-2 py-0.5 text-[11px] font-medium text-primary/85">
                 {tag}
               </li>
             ))}

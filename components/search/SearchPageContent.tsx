@@ -103,7 +103,7 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
             <Link
               key={keyword}
               href={`/search?q=${encodeURIComponent(keyword)}`}
-              className="ui-hover inline-flex rounded-full px-3.5 py-1.5 text-sm text-secondary hover:bg-secondary-background/70"
+              className="ui-hover inline-flex rounded-full bg-secondary-background px-3.5 py-1.5 text-sm text-secondary hover:bg-tertiary-background"
             >
               {keyword}
             </Link>
