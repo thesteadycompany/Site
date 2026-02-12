@@ -8,21 +8,21 @@ published: true
 ---
 
 ## iOS 개발자의 AI 활용
-Xcode를 사용하면 AI에 대해 꽤 제한적이다.<br>
+Xcode를 사용하면 AI에 대해 꽤 제한적이다.\
 Xcode 26부터 Claude와 GPT를 연동할 수 있는 기능이 추가되었는데 썩 좋지 못하다.
 
 GUI를 자주 사용하다보니 터미널에는 친숙하지 않아 Claude도 정감이 가지 않았다.
 
 ## 선택
-일단 Cursor를 사용했다.<br>
-IDE에 연동되어있고, Flutter를 개발할 때 VSCode를 사용한 경험이 있어 익숙했다.<br>
+일단 Cursor를 사용했다.\
+IDE에 연동되어있고, Flutter를 개발할 때 VSCode를 사용한 경험이 있어 익숙했다.\
 Sweetpad으로 빌드도 하고 다 할 수 있는데 이상하게 불편했다.
 - OSLog를 사용하면 터미널에 정상적으로 출력되지 않음 (print는 정상 작동)
 - Xcode와 다르게 마지막 줄 개행이 되지 않아 IDE를 스위칭할 때 자꾸 변경사항이 생김
 
 ## vs. Claude?
-Claude를 깊게 사용하지는 않았지만, Cursor의 장점 중 하나인 @File.swift 이런 방식으로 파일 접근 자동 완성을 지원하지 않는다.<br>
-그러나 반대로 Claude는 IDE에 대한 종속성이 없다.<br>
+Claude를 깊게 사용하지는 않았지만, Cursor의 장점 중 하나인 @File.swift 이런 방식으로 파일 접근 자동 완성을 지원하지 않는다.\
+그러나 반대로 Claude는 IDE에 대한 종속성이 없다.\
 어떤 작업을 할 때 Cursor는 VSCode에 종속이 되었지만, Claude는 터미널이라 확실히 더 활용도가 높은 것 같다.
 
 ## 현재
