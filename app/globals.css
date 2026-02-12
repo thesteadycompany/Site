@@ -165,10 +165,98 @@ button {
   color: var(--secondary);
 }
 
+.prose-content a {
+  color: var(--focus-ring);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 0.03em;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.prose-content a:visited {
+  color: var(--focus-ring);
+}
+
+.prose-content a:hover {
+  color: color-mix(in srgb, var(--focus-ring) 94%, white);
+  border-bottom-color: currentColor;
+  background: color-mix(in srgb, var(--focus-ring) 10%, transparent);
+}
+
+.prose-content a:active {
+  color: color-mix(in srgb, var(--focus-ring) 82%, var(--primary));
+  border-bottom-color: currentColor;
+}
+
+.prose-content li a,
+.prose-content p a {
+  display: inline;
+}
+
+.article-link {
+  color: var(--focus-ring) !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid currentColor !important;
+  padding-bottom: 0.03em;
+  font-weight: 600;
+}
+
+.article-link:hover {
+  color: color-mix(in srgb, var(--focus-ring) 94%, white) !important;
+  background: color-mix(in srgb, var(--focus-ring) 10%, transparent);
+}
+
 .prose-content ul,
 .prose-content ol {
   margin-left: 1.25rem;
   margin-bottom: 1rem;
+}
+
+.prose-content ul {
+  list-style: disc;
+}
+
+.prose-content ol {
+  list-style: decimal;
+}
+
+.prose-content li {
+  margin: 0.25rem 0;
+}
+
+.prose-content li::marker {
+  color: var(--tertiary);
+}
+
+.prose-content table {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.prose-content th,
+.prose-content td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-content th {
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--secondary-background);
+}
+
+.prose-content td {
+  color: var(--secondary);
 }
 
 .prose-content pre {

@@ -144,6 +144,20 @@ export default async function GardenArticlePage({ params }: GardenArticlePagePro
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeHighlight]}
             components={{
+              a: ({ href, children }) => {
+                const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
+
+                return (
+                  <a
+                    href={href}
+                    className="article-link"
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer noopener" : undefined}
+                  >
+                    {children}
+                  </a>
+                );
+              },
               img: ({ alt, src }) => {
                 if (!src || typeof src !== "string") {
                   return null;
