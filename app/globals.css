@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "highlight.js/styles/xcode.css";
+@import "./styles/highlight-light.css";
+@import "./styles/highlight-dark.css";
 
 :root {
   --background: #ffffff;
@@ -172,10 +173,11 @@ button {
 
 .prose-content pre {
   margin: 1.25rem 0;
-  padding: 1rem;
+  padding: 0;
   overflow-x: auto;
   border-radius: 0.75rem;
   border: 1px solid var(--border);
+  background: transparent;
 }
 
 .prose-content code {
@@ -188,11 +190,6 @@ button {
   border-radius: 0.35rem;
   background: var(--secondary-background);
   color: var(--primary);
-}
-
-.dark .hljs {
-  background: #1a1a1a;
-  color: #d4d4d4;
 }
 
 .prose-content hr {

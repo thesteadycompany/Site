@@ -1,0 +1,134 @@
+.dark .prose-content .hljs,
+[data-theme="dark"] .prose-content .hljs {
+  color: #adbac7;
+  background: #22272e;
+}
+
+.dark .prose-content .hljs-doctag,
+.dark .prose-content .hljs-keyword,
+.dark .prose-content .hljs-meta .hljs-keyword,
+.dark .prose-content .hljs-template-tag,
+.dark .prose-content .hljs-template-variable,
+.dark .prose-content .hljs-type,
+.dark .prose-content .hljs-variable.language_,
+[data-theme="dark"] .prose-content .hljs-doctag,
+[data-theme="dark"] .prose-content .hljs-keyword,
+[data-theme="dark"] .prose-content .hljs-meta .hljs-keyword,
+[data-theme="dark"] .prose-content .hljs-template-tag,
+[data-theme="dark"] .prose-content .hljs-template-variable,
+[data-theme="dark"] .prose-content .hljs-type,
+[data-theme="dark"] .prose-content .hljs-variable.language_ {
+  color: #f47067;
+}
+
+.dark .prose-content .hljs-title,
+.dark .prose-content .hljs-title.class_,
+.dark .prose-content .hljs-title.class_.inherited__,
+.dark .prose-content .hljs-title.function_,
+[data-theme="dark"] .prose-content .hljs-title,
+[data-theme="dark"] .prose-content .hljs-title.class_,
+[data-theme="dark"] .prose-content .hljs-title.class_.inherited__,
+[data-theme="dark"] .prose-content .hljs-title.function_ {
+  color: #dcbdfb;
+}
+
+.dark .prose-content .hljs-attr,
+.dark .prose-content .hljs-attribute,
+.dark .prose-content .hljs-literal,
+.dark .prose-content .hljs-meta,
+.dark .prose-content .hljs-number,
+.dark .prose-content .hljs-operator,
+.dark .prose-content .hljs-variable,
+.dark .prose-content .hljs-selector-attr,
+.dark .prose-content .hljs-selector-class,
+.dark .prose-content .hljs-selector-id,
+[data-theme="dark"] .prose-content .hljs-attr,
+[data-theme="dark"] .prose-content .hljs-attribute,
+[data-theme="dark"] .prose-content .hljs-literal,
+[data-theme="dark"] .prose-content .hljs-meta,
+[data-theme="dark"] .prose-content .hljs-number,
+[data-theme="dark"] .prose-content .hljs-operator,
+[data-theme="dark"] .prose-content .hljs-variable,
+[data-theme="dark"] .prose-content .hljs-selector-attr,
+[data-theme="dark"] .prose-content .hljs-selector-class,
+[data-theme="dark"] .prose-content .hljs-selector-id {
+  color: #6cb6ff;
+}
+
+.dark .prose-content .hljs-regexp,
+.dark .prose-content .hljs-string,
+.dark .prose-content .hljs-meta .hljs-string,
+[data-theme="dark"] .prose-content .hljs-regexp,
+[data-theme="dark"] .prose-content .hljs-string,
+[data-theme="dark"] .prose-content .hljs-meta .hljs-string {
+  color: #96d0ff;
+}
+
+.dark .prose-content .hljs-built_in,
+.dark .prose-content .hljs-symbol,
+[data-theme="dark"] .prose-content .hljs-built_in,
+[data-theme="dark"] .prose-content .hljs-symbol {
+  color: #f69d50;
+}
+
+.dark .prose-content .hljs-comment,
+.dark .prose-content .hljs-code,
+.dark .prose-content .hljs-formula,
+[data-theme="dark"] .prose-content .hljs-comment,
+[data-theme="dark"] .prose-content .hljs-code,
+[data-theme="dark"] .prose-content .hljs-formula {
+  color: #909dab;
+}
+
+.dark .prose-content .hljs-name,
+.dark .prose-content .hljs-quote,
+.dark .prose-content .hljs-selector-tag,
+.dark .prose-content .hljs-selector-pseudo,
+[data-theme="dark"] .prose-content .hljs-name,
+[data-theme="dark"] .prose-content .hljs-quote,
+[data-theme="dark"] .prose-content .hljs-selector-tag,
+[data-theme="dark"] .prose-content .hljs-selector-pseudo {
+  color: #8ddb8c;
+}
+
+.dark .prose-content .hljs-subst,
+.dark .prose-content .hljs-emphasis,
+.dark .prose-content .hljs-strong,
+[data-theme="dark"] .prose-content .hljs-subst,
+[data-theme="dark"] .prose-content .hljs-emphasis,
+[data-theme="dark"] .prose-content .hljs-strong {
+  color: #adbac7;
+}
+
+.dark .prose-content .hljs-section,
+[data-theme="dark"] .prose-content .hljs-section {
+  color: #539bf5;
+  font-weight: 700;
+}
+
+.dark .prose-content .hljs-bullet,
+[data-theme="dark"] .prose-content .hljs-bullet {
+  color: #eac55f;
+}
+
+.dark .prose-content .hljs-emphasis,
+[data-theme="dark"] .prose-content .hljs-emphasis {
+  font-style: italic;
+}
+
+.dark .prose-content .hljs-strong,
+[data-theme="dark"] .prose-content .hljs-strong {
+  font-weight: 700;
+}
+
+.dark .prose-content .hljs-addition,
+[data-theme="dark"] .prose-content .hljs-addition {
+  color: #b4f1b4;
+  background-color: #1b4721;
+}
+
+.dark .prose-content .hljs-deletion,
+[data-theme="dark"] .prose-content .hljs-deletion {
+  color: #ffd8d3;
+  background-color: #78191b;
+}
