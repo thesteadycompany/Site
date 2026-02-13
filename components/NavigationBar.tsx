@@ -32,6 +32,9 @@ export function NavigationBar() {
             <Link href="/article" className="ui-hover whitespace-nowrap underline-offset-4 hover:underline">
               Article
             </Link>
+            <Link href="/projects" className="ui-hover whitespace-nowrap underline-offset-4 hover:underline">
+              Projects
+            </Link>
           </nav>
 
           <Link
@@ -69,6 +72,9 @@ export function NavigationBar() {
               </Link>
               <Link href="/article" onClick={closeMenu} className="ui-hover rounded-md px-2 py-1.5">
                 Article
+              </Link>
+              <Link href="/projects" onClick={closeMenu} className="ui-hover rounded-md px-2 py-1.5">
+                Projects
               </Link>
               <Link href="/search" onClick={closeMenu} className="ui-hover rounded-md px-2 py-1.5">
                 Search

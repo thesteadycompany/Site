@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HomeFeedCard } from "@/components/home/HomeFeedCard";
 import { HomeFilterChips } from "@/components/home/HomeFilterChips";
-import { HomeHeroCard } from "@/components/home/HomeHeroCard";
+import { HomeProjectsCarousel } from "@/components/home/HomeProjectsCarousel";
 import type { HomeFeedData, HomeFilterType } from "@/lib/home-feed";
 
 type HomeFeedProps = {
@@ -49,7 +49,9 @@ export function HomeFeed({ data }: HomeFeedProps) {
 
   return (
     <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 pt-2 sm:gap-10 sm:pt-4">
-      {data.hero ? <HomeHeroCard item={data.hero} /> : null}
+      {data.hero || data.projectHighlights.length > 0 ? (
+        <HomeProjectsCarousel heroItem={data.hero} items={data.projectHighlights} />
+      ) : null}
 
       <div id="home-feed" className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
