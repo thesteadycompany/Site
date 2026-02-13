@@ -4,6 +4,7 @@ title: 의존성 주입에 대해서
 subtitle: iOS에서 사용하는 의존성 주입 방법은 뭐가 있을까?
 date: 2025-05-06 00:00
 tags: Blog, Swift, Dependency-Injection
+coverImage: /images/covers/dependency-injection-cover.jpg
 published: true
 ---
 

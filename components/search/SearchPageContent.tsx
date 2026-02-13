@@ -148,15 +148,30 @@ export function SearchPageContent({ items }: SearchPageContentProps) {
             <Link
               key={latestArticle.slug}
               href={latestArticle.url}
-              className="ui-hover ui-hover-lift group rounded-xl px-1.5 py-1"
+              className="ui-hover ui-hover-lift group rounded-xl p-1.5 sm:p-2"
             >
-              <p className="text-sm text-tertiary">{latestArticle.date}</p>
-              <p className="mt-1 text-base font-semibold text-primary transition-colors group-hover:text-secondary">
-                {latestArticle.title}
-              </p>
-              {latestArticle.subtitle ? (
-                <p className="mt-1 line-clamp-2 text-sm text-secondary">{latestArticle.subtitle}</p>
-              ) : null}
+              <div className="grid gap-3 sm:grid-cols-[1fr_140px] sm:items-start">
+                <div className="min-w-0">
+                  <p className="text-sm text-tertiary">{latestArticle.date}</p>
+                  <p className="mt-1 text-base font-semibold text-primary transition-colors group-hover:text-secondary">
+                    {latestArticle.title}
+                  </p>
+                  {latestArticle.subtitle ? (
+                    <p className="mt-1 line-clamp-2 text-sm text-secondary">{latestArticle.subtitle}</p>
+                  ) : null}
+                </div>
+                {latestArticle.coverImage ? (
+                  <div className="relative order-first h-20 w-full overflow-hidden rounded-lg sm:order-none sm:h-[84px]">
+                    <Image
+                      src={latestArticle.coverImage}
+                      alt={`${latestArticle.title} cover image`}
+                      fill
+                      unoptimized
+                      className="object-cover"
+                    />
+                  </div>
+                ) : null}
+              </div>
             </Link>
           ) : null}
         </div>

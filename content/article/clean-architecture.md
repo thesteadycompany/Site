@@ -4,6 +4,7 @@ title: 클린 아키텍처를 쓰는 이유
 subtitle: 왜 이렇게 채용공고 우대사항에 클린 아키텍처가 있을까?
 date: 2025-05-03 00:00
 tags: Blog, Swift, Architecture
+coverImage: /images/covers/clean-architecture-cover.jpg
 published: true
 ---
 

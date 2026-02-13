@@ -4,6 +4,7 @@ title: 블로그를 이사하는 이유
 subtitle: 블로그를 이전하는 이유에 대한 설명
 date: 2025-01-07 10:00
 tags: Blog, Swift, Web
+coverImage: /images/covers/why-im-relocating-my-blog-cover.jpg
 published: true
 ---
 

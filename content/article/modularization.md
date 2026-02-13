@@ -4,6 +4,7 @@ title: 모듈화를 하는 이유
 subtitle: 모듈화가 필요한 이유에 대한 설명
 date: 2025-01-12 12:00
 tags: Blog, Swift, Modularization
+coverImage: /images/covers/modularization-cover.jpg
 published: true
 ---
 

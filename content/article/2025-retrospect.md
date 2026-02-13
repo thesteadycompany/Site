@@ -4,6 +4,7 @@ title: 2025년 회고
 subtitle: 레거시 개선과 모듈화, 그리고 AI의 시작
 date: 2026-01-18 14:00
 tags: Retrospective, iOS, Refactoring, Modularization, AI
+coverImage: /images/covers/2025-retrospect-cover.jpg
 published: true
 ---
 

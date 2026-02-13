@@ -4,6 +4,7 @@ title: Ignite로 시작했다가 React로 돌아온 이유
 subtitle: AI 시대에 ‘스킬’이 퀄리티를 만든다고 느낀 순간들
 date: 2026-02-13 10:00
 tags: AI, Prompt, Skill, React, Ignite, Blog
+coverImage: /images/covers/ignite-to-react-skilltree-cover.jpg
 published: true
 ---
 

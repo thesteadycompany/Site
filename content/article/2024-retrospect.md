@@ -4,6 +4,7 @@ title: 2024 회고
 subtitle: 2024년에 겪었던 일과 이에 대한 회고
 date: 2024-12-29 14:41
 tags: Blog, Mobile, Communication
+coverImage: /images/covers/2024-retrospect-cover.jpg
 published: true
 ---
 

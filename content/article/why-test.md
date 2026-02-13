@@ -4,6 +4,7 @@ title: 테스트를 작성해야 하는 이유
 subtitle: 왜 우리는 시간을 들여 테스트를 작성해야 하는가
 date: 2025-01-15 20:00
 tags: Blog, Swift, Test
+coverImage: /images/covers/why-test-cover.jpg
 published: true
 ---
 

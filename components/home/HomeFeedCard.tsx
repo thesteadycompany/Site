@@ -12,14 +12,14 @@ export function HomeFeedCard({ item }: HomeFeedCardProps) {
     ? "bg-[var(--badge-garden-bg)] text-[var(--badge-garden-text)]"
     : "bg-[var(--badge-article-bg)] text-[var(--badge-article-text)]";
   const badgeLabel = isGarden ? "Garden" : "Article";
-  const shouldShowImage = isGarden && Boolean(item.coverImage);
+  const shouldShowImage = Boolean(item.coverImage);
 
   return (
     <article className="group">
       <Link
         href={item.url}
         className={`ui-hover ui-hover-lift grid gap-3 rounded-2xl ${
-          isGarden ? "md:grid-cols-[1fr_280px] md:items-center md:gap-4" : ""
+          shouldShowImage ? "md:grid-cols-[1fr_280px] md:items-center md:gap-4" : ""
         }`}
       >
         <div className="min-w-0 py-1">
@@ -40,14 +40,15 @@ export function HomeFeedCard({ item }: HomeFeedCardProps) {
           </ul>
         </div>
         {shouldShowImage ? (
-          <Image
-            src={item.coverImage!}
-            alt={`${item.title} cover image`}
-            width={1200}
-            height={675}
-            unoptimized
-            className="order-first h-auto w-full rounded-xl md:order-none"
-          />
+          <div className="relative order-first aspect-video w-full overflow-hidden rounded-xl md:order-none">
+            <Image
+              src={item.coverImage!}
+              alt={`${item.title} cover image`}
+              fill
+              unoptimized
+              className="object-cover"
+            />
+          </div>
         ) : null}
       </Link>
     </article>

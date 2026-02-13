@@ -4,6 +4,7 @@ title: 꾸준하게 하기
 subtitle: AI를 열심히 활용해보자
 date: 2026-01-30 22:00
 tags: iOS, AI
+coverImage: /images/covers/with-ai-cover.jpg
 published: true
 ---
 
