@@ -8,8 +8,9 @@ import type { HomeFeedItem, HomeProjectItem } from "@/lib/home-feed";
 const AUTOPLAY_MS = 5000;
 
 type HomeProjectsCarouselProps = {
-  heroItem: HomeFeedItem | null;
-  items: HomeProjectItem[];
+  carouselArticle: HomeFeedItem | null;
+  carouselGarden: HomeFeedItem | null;
+  carouselProject: HomeProjectItem | null;
 };
 
 function toWrappedIndex(value: number, total: number): number {
@@ -27,26 +28,35 @@ type CarouselSlideItem = {
   url: string;
 };
 
-export function HomeProjectsCarousel({ heroItem, items }: HomeProjectsCarouselProps) {
+function feedToSlide(item: HomeFeedItem, prefix: string): CarouselSlideItem {
+  return {
+    id: `${prefix}-${item.contentType}-${item.slug}`,
+    title: item.title,
+    description: item.subtitle ?? "",
+    image: item.coverImage,
+    url: item.url,
+  };
+}
+
+function projectToSlide(item: HomeProjectItem): CarouselSlideItem {
+  return {
+    id: `project-${item.slug}`,
+    title: item.title,
+    description: item.summary,
+    image: item.thumbnail,
+    url: item.url,
+  };
+}
+
+export function HomeProjectsCarousel({
+  carouselArticle,
+  carouselGarden,
+  carouselProject,
+}: HomeProjectsCarouselProps) {
   const slides: CarouselSlideItem[] = [
-    ...(heroItem
-      ? [
-          {
-            id: `hero-${heroItem.contentType}-${heroItem.slug}`,
-            title: heroItem.title,
-            description: heroItem.subtitle ?? "",
-            image: heroItem.coverImage,
-            url: heroItem.url,
-          },
-        ]
-      : []),
-    ...items.map((item) => ({
-      id: `project-${item.slug}`,
-      title: item.title,
-      description: item.summary,
-      image: item.thumbnail,
-      url: item.url,
-    })),
+    ...(carouselArticle ? [feedToSlide(carouselArticle, "article")] : []),
+    ...(carouselGarden ? [feedToSlide(carouselGarden, "garden")] : []),
+    ...(carouselProject ? [projectToSlide(carouselProject)] : []),
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -85,7 +95,7 @@ export function HomeProjectsCarousel({ heroItem, items }: HomeProjectsCarouselPr
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={() => setIsPaused(false)}
-      aria-label="Projects carousel section"
+      aria-label="최신 아티클, 가든, 프로젝트 캐로셀"
     >
       <div className="overflow-hidden rounded-2xl">
         <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -118,7 +128,7 @@ export function HomeProjectsCarousel({ heroItem, items }: HomeProjectsCarouselPr
           <button
             type="button"
             onClick={handlePrevious}
-            aria-label="이전 프로젝트"
+            aria-label="이전 슬라이드"
             className="ui-hover inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary-background/90 text-secondary hover:bg-tertiary-background/80"
           >
             <span aria-hidden className="text-2xl font-normal leading-none">
@@ -128,7 +138,7 @@ export function HomeProjectsCarousel({ heroItem, items }: HomeProjectsCarouselPr
           <button
             type="button"
             onClick={handleNext}
-            aria-label="다음 프로젝트"
+            aria-label="다음 슬라이드"
             className="ui-hover inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary-background/90 text-secondary hover:bg-tertiary-background/80"
           >
             <span aria-hidden className="text-2xl font-normal leading-none">

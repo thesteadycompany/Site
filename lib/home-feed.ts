@@ -33,6 +33,10 @@ export type HomeFeedData = {
   gardenHighlights: HomeFeedItem[];
   articleHighlights: HomeFeedItem[];
   projectHighlights: HomeProjectItem[];
+  /** 캐로셀용: 최신 아티클 1, 최신 가든 1, 최신 프로젝트 1 */
+  carouselArticle: HomeFeedItem | null;
+  carouselGarden: HomeFeedItem | null;
+  carouselProject: HomeProjectItem | null;
 };
 
 function toComparableTime(dateString: string): number {
@@ -88,6 +92,11 @@ export async function getHomeFeed(): Promise<HomeFeedData> {
     (a, b) => toComparableTime(b.date) - toComparableTime(a.date),
   );
   const heroCandidates = [...gardenItems, ...personalItems].sort((a, b) => toComparableTime(b.date) - toComparableTime(a.date));
+  const gardenByDate = [...gardenItems].sort((a, b) => toComparableTime(b.date) - toComparableTime(a.date));
+  const articleByDate = [...personalItems].sort((a, b) => toComparableTime(b.date) - toComparableTime(a.date));
+  const projectByUpdated = [...projectItems].sort(
+    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+  );
 
   return {
     allItems,
@@ -96,5 +105,8 @@ export async function getHomeFeed(): Promise<HomeFeedData> {
     gardenHighlights: gardenItems.slice(0, 3),
     articleHighlights: personalItems.slice(0, 3),
     projectHighlights: projectItems.slice(0, 3),
+    carouselArticle: articleByDate[0] ?? null,
+    carouselGarden: gardenByDate[0] ?? null,
+    carouselProject: projectByUpdated[0] ?? null,
   };
 }

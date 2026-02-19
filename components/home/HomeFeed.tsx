@@ -49,8 +49,12 @@ export function HomeFeed({ data }: HomeFeedProps) {
 
   return (
     <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 pt-2 sm:gap-10 sm:pt-4">
-      {data.hero || data.projectHighlights.length > 0 ? (
-        <HomeProjectsCarousel heroItem={data.hero} items={data.projectHighlights} />
+      {data.carouselArticle || data.carouselGarden || data.carouselProject ? (
+        <HomeProjectsCarousel
+          carouselArticle={data.carouselArticle}
+          carouselGarden={data.carouselGarden}
+          carouselProject={data.carouselProject}
+        />
       ) : null}
 
       <div id="home-feed" className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-end sm:justify-between">
