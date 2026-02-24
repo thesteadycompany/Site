@@ -1,9 +1,55 @@
 import Image from "next/image";
 import type { Components } from "react-markdown";
 
+function isGitHubAttachmentAssetLink(url: string): boolean {
+  return url.includes("github.com/user-attachments/assets/");
+}
+
+function looksLikeVideoLabel(text: string): boolean {
+  return /(video|영상|mp4|mov|webm)/i.test(text);
+}
+
+function isVideoFilePath(url: string): boolean {
+  return /\.(mp4|mov|webm)(\?.*)?$/i.test(url);
+}
+
+function getVideoMimeType(url: string): string | undefined {
+  if (/\.mov(\?.*)?$/i.test(url)) return "video/quicktime";
+  if (/\.mp4(\?.*)?$/i.test(url)) return "video/mp4";
+  if (/\.webm(\?.*)?$/i.test(url)) return "video/webm";
+  return undefined;
+}
+
+function shouldRenderAsVideo(url: string, labelText = ""): boolean {
+  if (isVideoFilePath(url)) {
+    return true;
+  }
+  return isGitHubAttachmentAssetLink(url) && looksLikeVideoLabel(labelText);
+}
+
 export const markdownComponents: Components = {
   a: ({ href, children }) => {
     const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
+    const childText = (Array.isArray(children) ? children : [children])
+      .map((child) => (typeof child === "string" ? child : ""))
+      .join(" ")
+      .trim();
+
+    if (typeof href === "string" && shouldRenderAsVideo(href, childText)) {
+      return (
+        <span className="my-5 block">
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            className="mx-auto block h-auto max-h-[70vh] w-full max-w-[420px] rounded-xl border border-border bg-black object-contain"
+          >
+            <source src={href} type={getVideoMimeType(href)} />
+            브라우저가 video 태그를 지원하지 않습니다. <a href={href}>영상 링크</a>
+          </video>
+        </span>
+      );
+    }
 
     return (
       <a
@@ -33,6 +79,22 @@ export const markdownComponents: Components = {
   img: ({ alt, src }) => {
     if (!src || typeof src !== "string") {
       return null;
+    }
+
+    if (shouldRenderAsVideo(src, alt ?? "")) {
+      return (
+        <span className="my-5 block">
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            className="mx-auto block h-auto max-h-[70vh] w-full max-w-[420px] rounded-xl border border-border bg-black object-contain"
+          >
+            <source src={src} type={getVideoMimeType(src)} />
+            브라우저가 video 태그를 지원하지 않습니다. <a href={src}>영상 링크</a>
+          </video>
+        </span>
+      );
     }
 
     return (

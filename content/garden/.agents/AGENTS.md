@@ -49,16 +49,28 @@
 
 ## Frontmatter
 
+Garden 글은 `coverImage`를 필수로 포함해요.
+
 ```yaml
 ---
 author: hogumachu
 title: [한국어 제목]
 subtitle: [한국어 부제]
+coverImage: /images/covers/{slug}-cover.jpg
 date: YYYY-MM-DD HH:MM
 tags: [쉼표로 구분, 영어/한국어 혼용 가능]
 published: true
 ---
 ```
+
+작성 후에는 `content/garden/_cover-image-workflow.md`를 따라 커버 이미지를 생성하고,\
+`public/images/covers/{slug}-cover.jpg` 파일 존재 여부와 frontmatter 경로 일치까지 확인해요.
+
+### 작성 체크리스트 (필수)
+
+- [ ] `content/garden/_cover-image-workflow.md` 기준으로 커버 이미지 생성
+- [ ] `public/images/covers/{slug}-cover.jpg` 파일 존재 확인
+- [ ] frontmatter `coverImage` 경로와 실제 파일 경로 일치 확인
 
 ---
 
