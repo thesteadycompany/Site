@@ -4,6 +4,7 @@ title: 러닝커브는 노력보다 비용의 문제다
 subtitle: 기술 선택에서 개인 성장과 팀 비용 사이의 기준 다시 세우기
 date: 2026-03-02 21:00
 tags: iOS, Swift, Architecture, Team
+coverImage: /images/covers/learning-curve-is-cost-cover.jpg
 published: true
 ---
 
